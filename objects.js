@@ -83,7 +83,52 @@ function Personel(id, name, age, salary) {
   this.name = name;
   this.age = age;
   this.salary = salary;
+  console.log(this);
 }
 
 const person1 = new Personel("1234567890", "Ahmet Can", 33, 30000);
 const person2 = new Personel("123456745454", "Mehmet Veli", 23, 10000);
+
+console.log(person1);
+// //? ES6
+// class Personel{
+// constructor()
+// }
+
+//* ==============================================
+//*                Object Metotlari
+//* ==============================================
+
+const personel = {
+  name: "Ahmet",
+  surname: "Canan",
+  dob: 1990,
+  salary: 30000,
+  drivingLicense: true,
+  calculateAge: function () {
+    console.log(this); //? personel objesini refere eder.
+    return new Date().getFullYear() - this.dob;
+  },
+  summary: function () {
+    console.log(this); //? window objesini refere eder.
+    return `${this.name} is ${this.calculateAge()} years old`;
+  },
+  //   summary: () => {
+  //     console.log(this); //? window objesini refere eder.
+  //     return `${this.name} is ${this.calculateAge()} years old`;
+  //   },
+};
+
+//! NOT: arrow fonksiyonlari özellikle callback fonksiyonu olarak
+//! kullanilmak ve bu fonksiyonlarda this keyword kullanim
+//! gereksinimini kaldırmak icin gelistirilmistir.
+//! Lexical context'e sahiptirler.Dolayısıyla, bir obje fonksiyonu
+//! olarak kullanilirsa, this kelimesi global scope'u (window nesnesini)
+//! gösterir. Bunu engellemek için object fonksiyonlarini tanimlarken
+//! diger (func. expression veya declaration) yontemlerini kullanabilir.
+
+console.log(personel.name + " " + personel.surname);
+
+console.log(personel.calculateAge());
+
+console.log(personel.summary());
