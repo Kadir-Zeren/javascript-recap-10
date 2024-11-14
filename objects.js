@@ -119,6 +119,10 @@ const personel = {
   //   },
 };
 
+console.log(personel.name + " " + personel.surname);
+
+console.log(personel.calculateAge());
+
 //! NOT: arrow fonksiyonlari özellikle callback fonksiyonu olarak
 //! kullanilmak ve bu fonksiyonlarda this keyword kullanim
 //! gereksinimini kaldırmak icin gelistirilmistir.
@@ -127,8 +131,48 @@ const personel = {
 //! gösterir. Bunu engellemek için object fonksiyonlarini tanimlarken
 //! diger (func. expression veya declaration) yontemlerini kullanabilir.
 
-console.log(personel.name + " " + personel.surname);
-
-console.log(personel.calculateAge());
-
 console.log(personel.summary());
+
+//*********************************************
+//* JSON => Javascript Object Notation
+//*********************************************
+
+const team = [
+  { name: "Ahmet", surname: "Can", job: "Developer", age: 30 },
+  { name: "Mary", surname: "Bary", job: "tester", age: 22 },
+  { name: "Hazel", surname: "Nut", job: "developer", age: 20 },
+];
+
+console.log(team);
+console.log(team[1]);
+console.log(team[1].name); //? Mary
+console.log(team[2].age); //? 20
+
+console.log(" ************* ");
+
+//* Ornek1: team dizisindeki job'lari tek tek yazdiriniz.
+team.forEach((p) => console.log(p.job));
+
+//* Ornek2: age'leri bir artırarak yeni bir diziye saklayiniz.
+const personelAges = team.map((person) => person.age + 1);
+console.log(personelAges);
+
+//* Örnek3: name ve surname'leri birleştirip buyuk harfe ceviren ve
+//* bunu fullName key'i olarak saklayan, aynı zamanda age degerlerini 5
+//* arttirarak age key'ine saklayan ve olusan diziyi donduren kodu yazınız.
+
+const teamFullName = team.map((p) => {
+  return {
+    fullName: p.name.toUpperCase() + " " + p.surname.toUpperCase(),
+    age: p.age + 5,
+  };
+});
+
+//? Alternative way
+const teamFullName1 = team.map((p) => ({
+  fullName: p.name.toUpperCase() + " " + p.surname.toUpperCase(),
+  age: p.age + 5,
+}));
+
+console.log(teamFullName);
+console.log(teamFullName1);
