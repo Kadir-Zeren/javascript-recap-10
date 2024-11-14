@@ -11,6 +11,8 @@
 
 console.log(" ******** Objects ********* ");
 
+//! 3 farkli yontem ile Object oluşturulabilir
+
 //* -----------------------------------------------
 //* 1- Object literal (En cok tercih edilen yontem)
 //* -----------------------------------------------
@@ -52,8 +54,20 @@ console.log(car);
 
 console.log("ENGINE:", car["engine"]); //? objeAdi["keyAdi"]
 
-const myKey = prompt(
-  "Araba ile ilgili Neyi ogrenmek istersiniz: speed, color, engine ... "
-);
+// const myKey = prompt(
+//   "Araba ile ilgili Neyi ogrenmek istersiniz: speed, color, engine ... "
+// );
 
-alert(car[myKey]);
+// alert(car[myKey]);
+
+//* ---------------------------------------------
+//* 2- Object() class'indan new Operatoru ile
+//* ---------------------------------------------
+
+const myCar = new Object();
+myCar.brand = "Mercedes";
+myCar.model = 2022;
+myCar.speed = 7;
+
+console.log(myCar.speed);
+console.log(myCar["model"]);
